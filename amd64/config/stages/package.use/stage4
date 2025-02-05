@@ -1,0 +1,28 @@
+dev-qt/qtpositioning geoclue
+media-video/ffmpeg libass
+media-libs/gst-plugins-base theora
+media-plugins/gst-plugins-meta theora v4l
+sys-boot/grub device-mapper libzfs
+sys-fs/lvm2 thin
+sys-libs/pam -filecaps
+media-libs/libsndfile minimal
+gnome-base/nautilus previewer
+gnome-extra/gnome-software flatpak
+media-libs/mesa xa
+app-containers/podman rootless
+media-video/pipewire lv2 jack-sdk sound-server
+net-fs/samba cups
+sys-fs/zfs rootfs
+net-misc/networkmanager connection-sharing iptables
+net-wireless/wpa_supplicant ap 	tkip p2p wep wps
+sys-devel/binutils gold
+*/* nftables
+media-libs/harfbuzz -cairo
+sys-kernel/installkernel dracut -systemd
+app-containers/docker btrfs
+dev-libs/boehm-gc cxx
+net-misc/freerdp server
+media-libs/freetype harfbuzz
+app-containers/containerd btrfs
+virtual/libcrypt static-libs
+sys-libs/libxcrypt static-libs

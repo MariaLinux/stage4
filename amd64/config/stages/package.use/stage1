@@ -1,0 +1,7 @@
+app-alternatives/awk gawk
+app-alternatives/lex flex
+app-alternatives/yacc bison
+app-alternatives/tar gnu
+app-alternatives/gzip reference
+app-alternatives/bzip2 reference
+sys-devel/gcc openmp

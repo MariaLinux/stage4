@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if ! id -u gdm >/dev/null 2>&1; then
+    useradd -d /var/lib/gdm -M -r -s /sbin/nologin gdm
+    usermod -aG video gdm
+    chown -R gdm:gdm /var/lib/gdm
+fi

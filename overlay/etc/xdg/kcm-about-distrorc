@@ -1,0 +1,5 @@
+[General]
+Name=Maria Linux
+LogoPath=/usr/share/pixmaps/maria.svgz 
+Website=https://github.com/MariaLinux
+UseOSReleaseVersion=true

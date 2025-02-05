@@ -1,0 +1,29 @@
+app-containers/distrobox *
+app-emulation/spice-vdagent *
+dev-libs/libjcat *
+gnome-base/gnome-light *
+gnome-extra/gnome-software
+gui-libs/gtk
+gui-libs/libadwaita
+gui-libs/xdg-desktop-portal-wlr *
+media-fonts/* *
+sys-apps/fwupd *
+sys-block/gparted *
+sys-boot/plymouth-openrc-plugin
+sys-fs/exfatprogs *
+sys-fs/go-mtpfs
+sys-fs/fuse-exfat *
+sys-fs/fuseiso *
+sys-fs/go-mtpfs ~*
+sys-fs/mac-fdisk *
+dev-python/Levenshtein # slot conflict
+app-containers/containers-common
+app-containers/containers-image
+gnome-extra/extension-manager ~amd64
+sys-apps/nix ~amd64
+app-text/lowdown-nix ~amd64
+dev-libs/editline ~amd64
+dev-libs/libcpuid ~amd64
+sys-apps/busybox-nix-sandbox-shell ~amd64
+dev-cpp/toml11 ~amd64
+dev-cpp/rapidcheck ~amd64

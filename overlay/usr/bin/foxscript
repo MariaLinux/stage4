@@ -1,0 +1,23 @@
+#!/usr/bin/python
+
+import sys
+
+if len(sys.argv) < 2:
+    exit()
+
+if sys.argv[1] == "--cultofwii":
+    print("""
+The cult of Wii is a group made by notorious cult leader Immoloism when he booted Gentoo Linux on a Wii. A small group formed around his ideals of cross-compiling software, building custom kernels, and using build tools such as catalyst with qemu-user. His methods spread far and wide, gaining a large audience who would eventually go on to pay for his 'Tesco Meal Deals' (TMD for short). As his ranks grew, well-renowned members gained status through a currency known as 'Channel Points', of which they used to change the leader's desktop wallpapers - often to humourous effect. Soon, the cult grew to an international community, with its efforts spread to other consoles such as the Playstation 2 and the 3DS - becoming known by its signature use of a Peppa Pig naming scheme. Once known as Ningentoo - the cult now stands as being internationally recognised in bringing such horror as Linux 5.x kernels to obsolete hardware.
+
+On a more serious note, thanks for using Maria Linux! It means a great deal to us all!
+
+'please help i've been trapped at the linux factory and forced to make distros' - Duality, 2023
+""")
+    
+elif sys.argv[1] == "--ilymaze":
+    print("""
+'I'LL THINK OF SOMETHING' - maze on what to put in this quote
+          
+love you
+- luna
+""")

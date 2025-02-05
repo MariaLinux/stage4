@@ -1,0 +1,34 @@
+#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+menuentry 'Maria Linux' --class maria --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-/mnt/roots/root.img' {
+        search.fs_label ROOTS roots
+        loopback loop0 ($roots)/root.img
+	load_video
+	if [ "x$grub_platform" = xefi ]; then
+		set gfxpayload=keep
+	fi
+	insmod gzio
+	insmod squash4
+	echo	'Loading Linux gentoo-dist ...'
+	linux	(loop0)/boot/vmlinuz ro quiet splash rd.live.squashimg=root.img rd.live.dir=/ rd.live.overlay.overlayfs=1 root=live:/dev/disk/by-label/ROOTS recovery=false
+	echo	'Loading initial ramdisk ...'
+	initrd	(loop0)/boot/initramfs.img
+}
+
+menuentry 'Maria Linux (Recovery)' --class maria --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-/mnt/roots/root.img' {
+        search.fs_label ROOTS roots
+        loopback loop0 ($roots)/root.img
+	load_video
+	if [ "x$grub_platform" = xefi ]; then
+		set gfxpayload=keep
+	fi
+	insmod gzio
+	insmod squash4
+	echo	'Loading Linux gentoo-dist ...'
+	linux	(loop0)/boot/vmlinuz ro quiet splash rd.live.squashimg=root.img rd.live.dir=/ rd.live.overlay.overlayfs=1 root=live:/dev/disk/by-label/ROOTS recovery=true
+	echo	'Loading initial ramdisk ...'
+	initrd	(loop0)/boot/initramfs.img
+}
