@@ -1,0 +1,27 @@
+name: MariaLinux Builder Workflow
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Run commands in marialinux_builder container
+      run: |
+        docker run --rm \
+          -v ${{ github.workspace }}:/workspace \
+          marialinux_builder \
+          /bin/bash -c "cd /workspace && \
+            # Add your commands here
+            ls -la && \
+            pwd && \
+            cat /etc/os-release && \
+            echo 'Running build commands...'"
