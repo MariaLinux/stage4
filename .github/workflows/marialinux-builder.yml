@@ -26,9 +26,9 @@ jobs:
             # Prepare Repositories
             echo "Prepare Repositories" && \
             eselect repository enable guru && \
-            eselect repository add xenia-overlay git https://gitlab.com/xenia-group/xenia-overlay.git && \
+            eselect repository add fox-overlay git https://github.com/MariaLinux/fox-overlay.git && \
             eselect repository add nix-guix git https://github.com/trofi/nix-guix-gentoo.git && \
-            http_proxy="http://127.0.0.1:20171" https_proxy="http://127.0.0.1:20171" emerge --sync -q -v && \
+            emerge --sync -q -v && \
             # Copy config files
             echo "Copy config files" && \
             rm -rf /var/tmp/catalyst/* && \
@@ -55,7 +55,7 @@ jobs:
             sed -i "s|@REPODIR@|/workspace|g" /var/tmp/catalyst/builds/default/stage4-systemd.spec && \
             # Build
             echo "Build..." && \
-            http_proxy="http://127.0.0.1:20171" https_proxy="http://127.0.0.1:20171"  catalyst -f stage4-systemd.spec && \
+            catalyst -f stage4-systemd.spec && \
             # Create image
             cd /images && \
             tar2sqfs root__$(date +"%Y-%m-%d-%H%M%S").img < /var/tmp/catalyst/builds/default/stage4-amd64-gnome-systemd.tar.xz && \
