@@ -14,13 +14,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Build Stage 1
+    - name: Build Image
       run: |
         docker run --rm --privileged --network=host \
           -v ${{ github.workspace }}:/workspace \
           -v /catalyst:/var/tmp/catalyst \
           marialinux_builder \
-          /bin/bash -c "cd /workspace && \
+          /bin/bash -c 'cd /workspace && \
             # Prepare Repositories
             echo "Prepare Repositories" && \
             eselect repository enable guru && \
@@ -35,7 +35,7 @@ jobs:
             # Create snapshot
             echo "Create snapshot" && \
             catalyst -s stable && \
-            export latest_snapshot=$(find /var/tmp/catalyst/snapshots/ -name "*.sqfs" -type f -printf "%T@ %p\n" | sort -n | tail -1 | cut -d" "" -f2-) && \
+            export latest_snapshot=$(find /var/tmp/catalyst/snapshots/ -name "*.sqfs" -type f -printf "%T@ %p\n" | sort -n | tail -1 | cut -d" " -f2-) && \
             export hash=$(echo $latest_snapshot | sed "s|.*gentoo-\([a-f0-9]*\)\.sqfs$|\1|") && \
             # Prepare spec file
             echo "Prepare spec file" && \
@@ -53,7 +53,7 @@ jobs:
             sed -i "s|@REPODIR@|/workspace|g" /var/tmp/catalyst/builds/default/stage4-systemd.spec && \
             # Build
             echo "Build..." && \
-            catalyst  -f stage4-systemd.spec && \
+            catalyst -f stage4-systemd.spec && \
             # Create image
             cd /images && \
             tar2sqfs root__$(date +"%Y-%m-%d-%H%M%S").img < /var/tmp/catalyst/builds/default/stage4-amd64-gnome-systemd.tar.xz && \
