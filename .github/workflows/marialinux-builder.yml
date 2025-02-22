@@ -19,6 +19,7 @@ jobs:
         docker run --rm --privileged --network=host \
           -v ${{ github.workspace }}:/workspace \
           -v /catalyst:/var/tmp/catalyst \
+          -v /images:/images \
           marialinux_builder \
           /bin/bash -c 'cd /workspace && \
             # Prepare Repositories
