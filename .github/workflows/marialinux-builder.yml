@@ -36,7 +36,7 @@ jobs:
             cp -r amd64/config/stages/* /var/tmp/catalyst/config && \
             # Create snapshot
             echo "Create snapshot" && \
-            http_proxy="http://127.0.0.1:20171" https_proxy="http://127.0.0.1:20171" catalyst -s stable && \
+            catalyst -s stable && \
             export latest_snapshot=$(find /var/tmp/catalyst/snapshots/ -name "*.sqfs" -type f -printf "%T@ %p\n" | sort -n | tail -1 | cut -d" " -f2-) && \
             export hash=$(echo $latest_snapshot | sed "s|.*gentoo-\([a-f0-9]*\)\.sqfs$|\1|") && \
             # Prepare spec file
@@ -55,7 +55,7 @@ jobs:
             sed -i "s|@REPODIR@|/workspace|g" /var/tmp/catalyst/builds/default/stage4-systemd.spec && \
             # Build
             echo "Build..." && \
-            catalyst -f stage4-systemd.spec && \
+            http_proxy="http://127.0.0.1:20171" https_proxy="http://127.0.0.1:20171"  catalyst -f stage4-systemd.spec && \
             # Create image
             cd /images && \
             tar2sqfs root__$(date +"%Y-%m-%d-%H%M%S").img < /var/tmp/catalyst/builds/default/stage4-amd64-gnome-systemd.tar.xz && \
