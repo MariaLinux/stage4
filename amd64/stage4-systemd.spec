@@ -6,7 +6,7 @@ profile: default/linux/amd64/23.0/desktop/gnome/systemd
 snapshot_treeish: @TREEISH@
 source_subpath: default/stage3-amd64-@TIMESTAMP@
 compression_mode: pixz
-portage_confdir: /var/tmp/catalyst/config/stages
+portage_confdir: /var/tmp/catalyst/config
 portage_prefix: releng
 repos: /var/db/repos/xenia-overlay /var/db/repos/guru /var/db/repos/nix-guix
 stage4/use:
@@ -129,5 +129,5 @@ stage4/rm:
 	/boot/vmlinuz?*
 	/boot/config?*
 	/boot/System.map?*
-stage4/root_overlay: @REPODIR@/overlay @REPODIR@/gnome-overlay
-stage4/fsscript: @REPODIR@/stage4-systemd.sh
+stage4/root_overlay: @REPODIR@/overlay
+stage4/fsscript: @REPODIR@/amd64/stage4-systemd.sh

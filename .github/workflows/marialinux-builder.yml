@@ -14,14 +14,47 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Run commands in marialinux_builder container
+    - name: Build Stage 1
       run: |
-        docker run --rm \
+        docker run --rm --privileged --network=host \
           -v ${{ github.workspace }}:/workspace \
+          -v /catalyst:/var/tmp/catalyst \
           marialinux_builder \
           /bin/bash -c "cd /workspace && \
-            # Add your commands here
-            ls -la && \
-            pwd && \
-            cat /etc/os-release && \
-            echo 'Running build commands...'"
+            # Prepare Repositories
+            echo "Prepare Repositories" && \
+            eselect repository enable guru && \
+            eselect repository add xenia-overlay git https://gitlab.com/xenia-group/xenia-overlay.git && \
+            eselect repository add nix-guix git https://github.com/trofi/nix-guix-gentoo.git && \
+            http_proxy="http://127.0.0.1:20171" https_proxy="http://127.0.0.1:20171" emerge --sync && \
+            # Copy config files
+            echo "Copy config files" && \
+            rm -rf /var/tmp/catalyst/* && \
+            mkdir -p /var/tmp/catalyst/config && \
+            cp -r amd64/config/stages/* /var/tmp/catalyst/config && \
+            # Create snapshot
+            echo "Create snapshot" && \
+            catalyst -s stable && \
+            export latest_snapshot=$(find /var/tmp/catalyst/snapshots/ -name "*.sqfs" -type f -printf "%T@ %p\n" | sort -n | tail -1 | cut -d" "" -f2-) && \
+            export hash=$(echo $latest_snapshot | sed "s|.*gentoo-\([a-f0-9]*\)\.sqfs$|\1|") && \
+            # Prepare spec file
+            echo "Prepare spec file" && \
+            mkdir -p /var/tmp/catalyst/builds/default && \
+            cp amd64/stage4* /var/tmp/catalyst/builds/default && \
+            sed -i "s/@TREEISH@/$hash/g" /var/tmp/catalyst/builds/default/stage4-systemd.spec && \
+            export profile_stage3__base_url="https://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64-desktop-systemd" && \
+            wget -P /var/tmp/catalyst/builds/default ${profile_stage3__base_url}/latest-stage3-amd64-desktop-systemd.txt && \
+            export latest_stage3=$(sed -n "/^stage3/s/ .*$//p" /var/tmp/catalyst/builds/default/latest-stage3-amd64-desktop-systemd.txt) && \
+            wget -P /var/tmp/catalyst/builds/default ${profile_stage3__base_url}/${latest_stage3} && \
+            wget -P /var/tmp/catalyst/builds/default ${profile_stage3__base_url}/${latest_stage3}.sha256 && \
+            cd /var/tmp/catalyst/builds/default && \
+            sha256sum -c ${latest_stage3}.sha256 && \
+            sed -i "s|stage3-amd64-@TIMESTAMP@|${latest_stage3}|g" /var/tmp/catalyst/builds/default/stage4-systemd.spec && \
+            sed -i "s|@REPODIR@|/workspace|g" /var/tmp/catalyst/builds/default/stage4-systemd.spec && \
+            # Build
+            echo "Build..." && \
+            catalyst  -f stage4-systemd.spec && \
+            # Create image
+            cd /images && \
+            tar2sqfs root__`date +"%Y-%m-%d-%H%M%S"`.img < /var/tmp/catalyst/builds/default/stage4-amd64-gnome-systemd.tar.xz && \
+            echo "Image created successfully!"'

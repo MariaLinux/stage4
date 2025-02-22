@@ -23,6 +23,8 @@ chown portage:portage /var/cache/distfiles
 cp /usr/share/i18n/SUPPORTED /etc/locale.gen
 locale-gen
 
+ldconfig
+
 echo mariaos > /etc/hostname
 hostnamectl hostname mariaos
 
