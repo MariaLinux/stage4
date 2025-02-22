@@ -20,6 +20,7 @@ jobs:
           -v ${{ github.workspace }}:/workspace \
           -v /catalyst:/var/tmp/catalyst \
           -v /images:/images \
+          -v /etc/catalyst:/etc/catalyst \
           marialinux_builder \
           /bin/bash -c 'cd /workspace && \
             # Prepare Repositories
@@ -27,7 +28,7 @@ jobs:
             eselect repository enable guru && \
             eselect repository add xenia-overlay git https://gitlab.com/xenia-group/xenia-overlay.git && \
             eselect repository add nix-guix git https://github.com/trofi/nix-guix-gentoo.git && \
-            http_proxy="http://127.0.0.1:20171" https_proxy="http://127.0.0.1:20171" emerge --sync && \
+            http_proxy="http://127.0.0.1:20171" https_proxy="http://127.0.0.1:20171" emerge --sync -q -v && \
             # Copy config files
             echo "Copy config files" && \
             rm -rf /var/tmp/catalyst/* && \
@@ -44,10 +45,10 @@ jobs:
             cp amd64/stage4* /var/tmp/catalyst/builds/default && \
             sed -i "s/@TREEISH@/$hash/g" /var/tmp/catalyst/builds/default/stage4-systemd.spec && \
             export profile_stage3__base_url="https://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64-desktop-systemd" && \
-            wget -P /var/tmp/catalyst/builds/default ${profile_stage3__base_url}/latest-stage3-amd64-desktop-systemd.txt && \
+            wget --no-verbose -P /var/tmp/catalyst/builds/default ${profile_stage3__base_url}/latest-stage3-amd64-desktop-systemd.txt && \
             export latest_stage3=$(sed -n "/^stage3/s/ .*$//p" /var/tmp/catalyst/builds/default/latest-stage3-amd64-desktop-systemd.txt) && \
-            wget -P /var/tmp/catalyst/builds/default ${profile_stage3__base_url}/${latest_stage3} && \
-            wget -P /var/tmp/catalyst/builds/default ${profile_stage3__base_url}/${latest_stage3}.sha256 && \
+            wget --no-verbose -P /var/tmp/catalyst/builds/default ${profile_stage3__base_url}/${latest_stage3} && \
+            wget --no-verbose -P /var/tmp/catalyst/builds/default ${profile_stage3__base_url}/${latest_stage3}.sha256 && \
             cd /var/tmp/catalyst/builds/default && \
             sha256sum -c ${latest_stage3}.sha256 && \
             sed -i "s|stage3-amd64-@TIMESTAMP@|${latest_stage3}|g" /var/tmp/catalyst/builds/default/stage4-systemd.spec && \
