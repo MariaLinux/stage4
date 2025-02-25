@@ -22,7 +22,8 @@ sys-kernel/installkernel dracut -systemd
 app-containers/docker btrfs
 dev-libs/boehm-gc cxx
 net-misc/freerdp server
-media-libs/freetype harfbuzz
+media-libs/freetype harfbuzz png
 app-containers/containerd btrfs
 virtual/libcrypt static-libs
 sys-libs/libxcrypt static-libs
+media-fonts/noto-emoji icons

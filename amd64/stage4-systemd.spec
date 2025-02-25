@@ -15,6 +15,7 @@ stage4/use:
 	fuse
 	flatpak
 	gstreamer
+	gnome
 	lvm
 	networkmanager
 	nls
@@ -31,6 +32,8 @@ stage4/use:
 	video_cards_amdgpu
 	video_cards_virgl
 	video_cards_vmware
+	video_cards_lavapipe
+	video_cards_zink
 	vaapi
 	vdpau
 	dri
@@ -61,6 +64,7 @@ stage4/packages:
 	gnome-extra/gnome-shell-extensions
 	gnome-extra/gnome-software
 	gnome-extra/gnome-tweaks
+	app-editors/gnome-text-editor
 	net-misc/gnome-remote-desktop
 	gnome-extra/extension-manager
 	media-gfx/eog
