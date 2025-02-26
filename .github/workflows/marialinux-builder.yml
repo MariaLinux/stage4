@@ -58,5 +58,5 @@ jobs:
             catalyst -f stage4-systemd.spec && \
             # Create image
             cd /images && \
-            tar2sqfs root__$(date +"%Y-%m-%d-%H%M%S").img < /var/tmp/catalyst/builds/default/stage4-amd64-gnome-systemd.tar.xz && \
+            tar2sqfs -q root__$(date +"%Y-%m-%d-%H%M%S").img < /var/tmp/catalyst/builds/default/stage4-amd64-gnome-systemd.tar.xz && \
             echo "Image created successfully!"'
