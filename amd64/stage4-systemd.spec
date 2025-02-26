@@ -126,6 +126,7 @@ stage4/packages:
 	sys-power/tlp
 	sys-process/htop
 	xenia-tools/xenia-meta
+	sys-devel/lld
 	sys-apps/nix
 stage4/empty: /var/tmp /var/cache /tmp 
 stage4/rm:
