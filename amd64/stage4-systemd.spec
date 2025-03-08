@@ -8,7 +8,7 @@ source_subpath: default/stage3-amd64-@TIMESTAMP@
 compression_mode: pixz
 portage_confdir: /var/tmp/catalyst/config
 portage_prefix: releng
-repos: /var/db/repos/fox-overlay /var/db/repos/guru /var/db/repos/nix-guix
+repos: /var/db/repos/fox-overlay /var/db/repos/guru
 stage4/use:
 	wayland
 	dist-kernel
@@ -127,7 +127,9 @@ stage4/packages:
 	sys-process/htop
 	xenia-tools/xenia-meta
 	llvm-core/lld
-	sys-apps/nix
+	dev-lang/rust
+	sys-apps/gnome-disk-utility
+	sys-firmware/intel-microcode
 stage4/empty: /var/tmp /var/cache /tmp 
 stage4/rm:
 	/boot/initramfs?*.img

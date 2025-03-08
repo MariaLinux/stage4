@@ -28,6 +28,9 @@ ldconfig
 echo mariaos > /etc/hostname
 hostnamectl hostname mariaos
 
+# Install Nix daemon
+sh <(curl -L https://nixos.org/nix/install) --daemon --yes
+
 systemctl enable bluetooth
 systemctl enable NetworkManager
 systemctl enable cups
@@ -42,7 +45,8 @@ systemctl enable zfs-mount
 systemctl enable zfs-import.target
 systemctl enable nix-daemon
 systemctl enable docker 
-systemctl enable libvirtd
+systemctl enable tlp
+#systemctl enable libvirtd
 
 systemctl --global enable pipewire.socket pipewire-pulse.socket wireplumber.service
 

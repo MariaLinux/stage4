@@ -2,3 +2,4 @@ sys-kernel/linux-firmware linux-fw-redistributable no-source-code
 media-fonts/font-bh-ttf bh-luxi
 x11-drivers/nvidia-drivers NVIDIA-r2
 app-arch/unrar unRAR
+sys-firmware/intel-microcode intel-ucode
