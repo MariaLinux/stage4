@@ -27,7 +27,6 @@ jobs:
             echo "Prepare Repositories" && \
             eselect repository enable guru && \
             eselect repository add fox-overlay git https://github.com/MariaLinux/fox-overlay.git && \
-            eselect repository add nix-guix git https://github.com/trofi/nix-guix-gentoo.git && \
             emerge --sync -q -v && \
             # Copy config files
             echo "Copy config files" && \

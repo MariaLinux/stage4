@@ -34,6 +34,7 @@ stage4/use:
 	video_cards_vmware
 	video_cards_lavapipe
 	video_cards_zink
+	llvm_targets_WebAssembly
 	vaapi
 	vdpau
 	dri
