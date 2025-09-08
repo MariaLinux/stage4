@@ -21,7 +21,7 @@ jobs:
           -v /catalyst:/var/tmp/catalyst \
           -v /images:/images \
           -v /etc/catalyst:/etc/catalyst \
-          marialinux_builder \
+          khozaei/marialinux_builder:latest \
           /bin/bash -c 'cd /workspace && \
             # Prepare Repositories
             echo "Prepare Repositories" && \
