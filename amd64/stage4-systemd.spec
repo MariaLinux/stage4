@@ -40,6 +40,7 @@ stage4/use:
 	dri
 	vpx
 	xkb
+	libvirt
 	-qt5
 	-qt6
 	-kde
@@ -131,6 +132,9 @@ stage4/packages:
 	dev-lang/rust
 	sys-apps/gnome-disk-utility
 	sys-firmware/intel-microcode
+	app-emulation/libvirt
+	app-emulation/qemu
+	app-emulation/virt-manager
 stage4/empty: /var/tmp /var/cache /tmp 
 stage4/rm:
 	/boot/initramfs?*.img

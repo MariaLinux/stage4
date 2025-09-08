@@ -29,3 +29,4 @@ sys-libs/libxcrypt static-libs
 media-fonts/noto-emoji icons
 dev-lang/rust wasm rustfmt system-llvm rust-src rust-analyzer clippy
 gnome-base/gvfs mtp nfs samba zeroconf
+app-emulation/libvirt qemu libvirtd virt-network
