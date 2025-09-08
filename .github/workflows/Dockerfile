@@ -9,5 +9,5 @@ RUN echo "dev-util/catalyst ~amd64" >> /etc/portage/package.accept_keywords/00_c
     echo "sys-boot/grub grub_platforms_efi-32" >> /etc/portage/package.use/00_core && \
     emerge-webrsync && \
     emerge --verbose --deep --newuse --with-bdeps=y --with-bdeps=y \
-    dev-util/catalyst
+    dev-util/catalyst app-eselect/eselect-repository
 
