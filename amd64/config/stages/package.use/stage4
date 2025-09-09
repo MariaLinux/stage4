@@ -31,3 +31,4 @@ dev-lang/rust wasm rustfmt system-llvm rust-src rust-analyzer clippy
 gnome-base/gvfs mtp nfs samba zeroconf
 app-emulation/libvirt qemu libvirtd virt-network
 net-misc/spice-gtk usbredir
+net-dns/dnsmasq script
