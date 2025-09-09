@@ -33,3 +33,4 @@ app-emulation/libvirt qemu libvirtd virt-network
 net-misc/spice-gtk usbredir
 net-dns/dnsmasq script
 net-libs/gnutls pkcs11 tools
+xenia-tools/foxmerge python_targets_python3_12
