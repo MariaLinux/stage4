@@ -136,7 +136,8 @@ stage4/packages:
 	app-emulation/qemu
 	app-emulation/virt-manager
 	app-shells/fish
-stage4/empty: /var/tmp /var/cache /tmp 
+	sys-kernel/gentoo-sources
+stage4/empty: /var/tmp /var/cache /tmp
 stage4/rm:
 	/boot/initramfs?*.img
 	/boot/vmlinuz?*
