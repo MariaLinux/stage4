@@ -16,7 +16,7 @@ jobs:
 
     - name: Build Image
       run: |
-        docker run --rm --privileged --network=host \
+        docker run --rm --privileged \
           -v ${{ github.workspace }}:/workspace \
           -v /catalyst:/var/tmp/catalyst \
           -v /images:/images \
