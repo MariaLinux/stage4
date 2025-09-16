@@ -129,7 +129,6 @@ stage4/packages:
 	sys-process/htop
 	xenia-tools/xenia-meta
 	llvm-core/lld
-	dev-lang/rust
 	sys-apps/gnome-disk-utility
 	sys-firmware/intel-microcode
 	app-emulation/libvirt
