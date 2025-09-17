@@ -29,7 +29,11 @@ echo mariaos > /etc/hostname
 hostnamectl hostname mariaos
 
 # Install Nix daemon
-# sh <(curl -L https://nixos.org/nix/install) --daemon --yes
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon --yes
+mkdir -p /etc/nix
+echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
+echo "build-users-group = nixbld" >> /etc/nix/nix.conf
+systemctl daemon-reload
 
 systemctl enable bluetooth
 systemctl enable NetworkManager
@@ -43,7 +47,7 @@ systemctl enable zfs.target
 systemctl enable zfs-import-cache
 systemctl enable zfs-mount
 systemctl enable zfs-import.target
-# systemctl enable nix-daemon
+systemctl enable nix-daemon
 systemctl enable docker 
 systemctl enable tlp
 # libvirtd

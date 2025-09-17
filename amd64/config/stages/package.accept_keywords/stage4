@@ -1,11 +1,11 @@
 app-containers/distrobox *
 app-emulation/spice-vdagent *
 dev-libs/libjcat *
-gnome-base/gnome-light *
-gnome-extra/gnome-software
-gui-libs/gtk
-gui-libs/libadwaita
-gui-libs/xdg-desktop-portal-wlr *
+gnome-base/* ~amd64
+gnome-extra/* ~amd64
+gui-libs/gtk ~amd64
+gui-libs/libadwaita ~amd64
+gui-libs/xdg-desktop-portal-wlr ~amd64
 media-fonts/* *
 sys-apps/fwupd *
 sys-block/gparted *
@@ -26,3 +26,4 @@ dev-libs/libcpuid ~amd64
 sys-apps/busybox-nix-sandbox-shell ~amd64
 dev-cpp/toml11 ~amd64
 dev-cpp/rapidcheck ~amd64
+app-shells/fish ~amd64

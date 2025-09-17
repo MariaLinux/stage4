@@ -9,6 +9,7 @@ mount -o rw,remount /sysroot/roots
 etc_path="/sysroot/overlay"
 var_path="/sysroot/overlay"
 usr_path="/sysroot/overlay"
+nix_path="/sysroot/overlay"
 
 get_filesystem() {
     label="$1"
@@ -118,11 +119,13 @@ foxmount() {
     [ ! -d "${etc_path}/etc" ] && mkdir ${etc_path}/etc
     [ ! -d "${var_path}/var" ] && mkdir ${var_path}/var
     [ ! -d "${usr_path}/usr" ] && mkdir ${usr_path}/usr
+    [ ! -d "${nix_path}/nix" ] && mkdir ${nix_path}/nix
 
     echo "foxmount: Creating overlay work directories if they don't exist"
     [ ! -d "${etc_path}/etcw" ] && mkdir ${etc_path}/etcw
     [ ! -d "${var_path}/varw" ] && mkdir ${var_path}/varw
     [ ! -d "${usr_path}/usrw" ] && mkdir ${usr_path}/usrw
+    [ ! -d "${nix_path}/nixw" ] && mkdir ${nix_path}/nixw
 
     echo "foxmount: Checking for foxsnapshot revert"
     if [ -s /sysroot/roots/.revert ]; then
@@ -135,6 +138,7 @@ foxmount() {
     mount -t overlay overlay -o lowerdir=/sysroot/usr,upperdir=${usr_path}/usr,workdir=${usr_path}/usrw,ro /sysroot/usr
     mount -t overlay overlay -o lowerdir=/sysroot/etc,upperdir=${etc_path}/etc,workdir=${etc_path}/etcw,rw /sysroot/etc
     mount -t overlay overlay -o lowerdir=/sysroot/var,upperdir=${var_path}/var,workdir=${var_path}/varw,rw /sysroot/var
+    mount -t overlay overlay -o lowerdir=/sysroot/nix,upperdir=${nix_path}/nix,workdir=${nix_path}/nixw,rw /sysroot/nix
     echo "foxmount: Finished mounting overlays"
 }
 
