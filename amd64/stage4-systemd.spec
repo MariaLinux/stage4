@@ -77,7 +77,10 @@ stage4/packages:
 	sys-apps/xdg-desktop-portal
 	gui-libs/xdg-desktop-portal-wlr
 	sys-apps/xdg-desktop-portal-gnome
-	media-fonts/fonts-meta
+	media-fonts/noto-emoji
+	media-fonts/noto
+	media-fonts/farsi-fonts
+	media-fonts/corefonts
 	media-libs/gstreamer
 	media-libs/mesa
 	media-video/wireplumber
