@@ -139,6 +139,7 @@ stage4/packages:
 	app-emulation/virt-manager
 	app-shells/fish
 	sys-kernel/linux-headers
+	app-containers/waydroid
 stage4/empty: /var/tmp /var/cache /tmp
 stage4/rm:
 	/boot/initramfs?*.img

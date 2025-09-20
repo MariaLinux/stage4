@@ -140,6 +140,7 @@ foxmount() {
     mount -t overlay overlay -o lowerdir=/sysroot/usr,upperdir=${usr_path}/usr,workdir=${usr_path}/usrw,ro /sysroot/usr
     mount -t overlay overlay -o lowerdir=/sysroot/etc,upperdir=${etc_path}/etc,workdir=${etc_path}/etcw,rw /sysroot/etc
     mount -t overlay overlay -o lowerdir=/sysroot/var,upperdir=${var_path}/var,workdir=${var_path}/varw,rw /sysroot/var
+    [ ! -d "/sysroot/nix" ] && mkdir /sysroot/nix
     mount -t overlay overlay -o lowerdir=/sysroot/nix,upperdir=${nix_path}/nix,workdir=${nix_path}/nixw,rw /sysroot/nix
     echo "foxmount: Finished mounting overlays"
 }

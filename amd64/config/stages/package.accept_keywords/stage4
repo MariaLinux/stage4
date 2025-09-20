@@ -27,3 +27,5 @@ sys-apps/busybox-nix-sandbox-shell ~amd64
 dev-cpp/toml11 ~amd64
 dev-cpp/rapidcheck ~amd64
 app-shells/fish ~amd64
+app-containers/waydroid ~amd64
+x11-themes/* ~amd64
