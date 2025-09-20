@@ -29,3 +29,5 @@ dev-cpp/rapidcheck ~amd64
 app-shells/fish ~amd64
 app-containers/waydroid ~amd64
 x11-themes/* ~amd64
+x11-wm/* ~amd64
+x11-misc/* ~amd64
