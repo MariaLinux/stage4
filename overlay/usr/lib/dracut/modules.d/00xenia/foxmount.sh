@@ -88,6 +88,7 @@ foxmount() {
         etc_path="/sysroot/overlay/etc"
         var_path="/sysroot/overlay/var"
         usr_path="/sysroot/overlay/usr"
+        nix_path="/sysroot/overlay/nix"
 
     elif [[ $(get_filesystem MARIA) = "zfs_member" ]] # this won't work, no label on ZFS - find another way
     then
@@ -108,7 +109,8 @@ foxmount() {
         echo "foxmount: Setting overlay paths"
         etc_path="/sysroot/overlay/etc"
         var_path="/sysroot/overlay/var"
-        usr_path="/sysroot/overlay/usr"    
+        usr_path="/sysroot/overlay/usr"
+        nix_path="/sysroot/overlay/nix"
     else
         echo "foxmount: FATAL: could not find overlays!"
         recovery
