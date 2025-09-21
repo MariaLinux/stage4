@@ -31,3 +31,4 @@ app-containers/waydroid ~amd64
 x11-themes/* ~amd64
 x11-wm/* ~amd64
 x11-misc/* ~amd64
+dev-python/pyclip ~amd64
