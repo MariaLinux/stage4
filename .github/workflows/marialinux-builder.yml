@@ -51,10 +51,11 @@ jobs:
             wget --no-verbose -P /var/tmp/catalyst/builds/default ${profile_stage3__base_url}/latest-stage3-amd64-desktop-systemd.txt
             export latest_stage3=$(sed -n "/^stage3/s/ .*$//p" /var/tmp/catalyst/builds/default/latest-stage3-amd64-desktop-systemd.txt)
 
-            if [ ! -f "/var/tmp/catalyst/builds/default/$latest_stage3" ]; then
+            if [ ! -f "/images/$latest_stage3" ]; then
               echo "Downloading new stage3: $latest_stage3"
-              wget --no-verbose -P /var/tmp/catalyst/builds/default ${profile_stage3__base_url}/${latest_stage3}
+              wget --no-verbose -P /images ${profile_stage3__base_url}/${latest_stage3}
             fi
+            ln -sf /images/$latest_stage3 /var/tmp/catalyst/builds/default/$latest_stage3
             wget --no-verbose -P /var/tmp/catalyst/builds/default ${profile_stage3__base_url}/${latest_stage3}.sha256
             cd /var/tmp/catalyst/builds/default
             sha256sum -c ${latest_stage3}.sha256
