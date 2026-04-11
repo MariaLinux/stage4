@@ -140,6 +140,10 @@ stage4/packages:
 	app-shells/fish
 	sys-kernel/linux-headers
 	app-containers/waydroid
+	sys-apps/usbutils
+	gnome-extra/gnome-network-displays
+	media-video/miraclecast
+	media-video/v4l2loopback
 stage4/empty: /var/tmp /var/cache /tmp
 stage4/rm:
 	/boot/initramfs?*.img

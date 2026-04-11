@@ -38,3 +38,4 @@ net-firewall/nftables ~amd64
 net-dns/dnsmasq ~amd64
 dev-libs/gbinder ~amd64
 dev-libs/libglibutil ~amd64
+media-video/miraclecast ~amd64
