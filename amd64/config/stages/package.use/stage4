@@ -34,3 +34,4 @@ net-misc/spice-gtk usbredir
 net-dns/dnsmasq script
 net-libs/gnutls pkcs11 tools
 sys-libs/libcap static-libs
+net-libs/ngtcp2 gnutls
