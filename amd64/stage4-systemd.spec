@@ -8,7 +8,7 @@ source_subpath: default/stage3-amd64-@TIMESTAMP@
 compression_mode: pixz
 portage_confdir: /var/tmp/catalyst/config
 portage_prefix: releng
-repos: /var/db/repos/fox-overlay /var/db/repos/guru
+repos: /var/db/repos/fox-overlay /var/db/repos/guru /var/db/repos/xoores
 stage4/use:
 	wayland
 	dist-kernel
