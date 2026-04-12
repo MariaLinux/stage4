@@ -1,0 +1,1 @@
+sys-kernel/gentoo-kernel-bin DONT_MOUNT_BOOT=1
