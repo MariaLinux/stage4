@@ -125,7 +125,7 @@ stage4/packages:
 	sys-fs/xfsprogs
 	sys-fs/zfs
 	sys-fs/zfs-kmod
-	sys-kernel/gentoo-kernel-bin
+	sys-kernel/gentoo-kernel
 	sys-kernel/linux-firmware
 	sys-power/power-profiles-daemon
 	sys-power/tlp
