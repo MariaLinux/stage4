@@ -125,7 +125,8 @@ stage4/packages:
 	sys-fs/xfsprogs
 	sys-fs/zfs
 	sys-fs/zfs-kmod
-	sys-kernel/gentoo-kernel
+	sys-kernel/genkernel
+    sys-kernel/gentoo-sources
 	sys-kernel/linux-firmware
 	sys-power/power-profiles-daemon
 	sys-power/tlp
@@ -144,8 +145,25 @@ stage4/packages:
 	gnome-extra/gnome-network-displays
 	media-video/miraclecast
 	media-video/v4l2loopback
-stage4/empty: /var/tmp /var/cache /tmp
+boot/kernel: gentoo
+boot/kernel/gentoo/sources: gentoo-sources
+boot/kernel/gentoo/gk_kernargs: --all-ramdisk-modules --install all
+stage4/unmerge:
+    sys-kernel/genkernel
+    sys-kernel/gentoo-sources
+stage4/empty: 
+	/var/tmp 
+	/var/cache 
+	/tmp
+	/usr/portage/distfiles
+    /usr/src
+    /var/cache/edb/dep
+    /var/cache/genkernel
+    /var/cache/portage/distfiles
+	/var/run
+    /var/state
 stage4/rm:
+	/usr/share/genkernel
 	/boot/initramfs?*.img
 	/boot/vmlinuz?*
 	/boot/config?*
