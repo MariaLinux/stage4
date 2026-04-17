@@ -41,6 +41,28 @@ stage4/use:
 	vpx
 	xkb
 	libvirt
+	systemd
+	ffmpeg
+	bluetooth
+	audit
+	upower
+	zstd
+	x264
+	webp
+	v4l
+	symlink
+	svg
+	svga
+	spell
+	smp
+	rdp
+	vnc
+	opengl
+	lto
+	io-uring
+	graphviz
+	gpm
+	dbus
 	-qt5
 	-qt6
 	-kde
@@ -145,15 +167,16 @@ stage4/packages:
 	gnome-extra/gnome-network-displays
 	media-video/miraclecast
 	media-video/v4l2loopback
+	media-fonts/fontawesome
 boot/kernel: gentoo
 boot/kernel/gentoo/sources: gentoo-sources
 boot/kernel/gentoo/gk_kernargs: --all-ramdisk-modules --install all
 stage4/unmerge:
     sys-kernel/genkernel
     sys-kernel/gentoo-sources
-stage4/empty: 
-	/var/tmp 
-	/var/cache 
+stage4/empty:
+	/var/tmp
+	/var/cache
 	/tmp
 	/usr/portage/distfiles
     /usr/src

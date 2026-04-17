@@ -1,7 +1,7 @@
 dev-qt/qtpositioning geoclue
 media-video/ffmpeg libass
 media-libs/gst-plugins-base theora
-media-plugins/gst-plugins-meta theora v4l
+media-plugins/gst-plugins-meta theora v4l vaapi pulseaudio ffmpeg vpx x264 http libvisual
 sys-boot/grub device-mapper libzfs
 sys-fs/lvm2 thin
 sys-libs/pam -filecaps
@@ -18,7 +18,7 @@ net-wireless/wpa_supplicant ap 	tkip p2p wep wps
 sys-devel/binutils gold
 */* nftables
 media-libs/harfbuzz -cairo
-sys-kernel/installkernel dracut -systemd
+sys-kernel/installkernel -dracut -systemd
 app-containers/docker btrfs
 dev-libs/boehm-gc cxx
 net-misc/freerdp server
@@ -35,3 +35,4 @@ net-dns/dnsmasq script
 net-libs/gnutls pkcs11 tools
 sys-libs/libcap static-libs
 net-libs/ngtcp2 gnutls
+sys-kernel/gentoo-kernel initramfs
