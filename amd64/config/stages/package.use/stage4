@@ -8,7 +8,7 @@ sys-libs/pam -filecaps
 media-libs/libsndfile minimal
 gnome-base/nautilus previewer
 gnome-extra/gnome-software flatpak
-media-libs/mesa xa
+media-libs/mesa lm-sensors vdpau wayland -xa
 app-containers/podman rootless
 media-video/pipewire lv2 jack-sdk sound-server ffmpeg extra
 net-fs/samba cups
@@ -18,7 +18,7 @@ net-wireless/wpa_supplicant ap 	tkip p2p wep wps
 sys-devel/binutils gold
 */* nftables
 media-libs/harfbuzz -cairo
-sys-kernel/installkernel -dracut -systemd
+sys-kernel/installkernel dracut
 app-containers/docker btrfs
 dev-libs/boehm-gc cxx
 net-misc/freerdp server

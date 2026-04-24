@@ -147,8 +147,6 @@ stage4/packages:
 	sys-fs/xfsprogs
 	sys-fs/zfs
 	sys-fs/zfs-kmod
-	sys-kernel/genkernel
-    sys-kernel/gentoo-sources
 	sys-kernel/linux-firmware
 	sys-power/power-profiles-daemon
 	sys-power/tlp
@@ -169,11 +167,6 @@ stage4/packages:
 	media-video/v4l2loopback
 	media-fonts/fontawesome
 boot/kernel: gentoo
-boot/kernel/gentoo/sources: gentoo-sources
-boot/kernel/gentoo/gk_kernargs: --all-ramdisk-modules --install all
-stage4/unmerge:
-    sys-kernel/genkernel
-    sys-kernel/gentoo-sources
 stage4/empty:
 	/var/tmp
 	/var/cache
